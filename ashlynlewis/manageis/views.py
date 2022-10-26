@@ -1,6 +1,7 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 
 # Create your views here.
 def indexPageView(request) :
-    return HttpResponse('Hello Universe!') 
+    return render(request, 'manageis/index.html')
+def firetablePageView(request) :
+    return render(request, 'manageis/firetable.html') 
