@@ -86,39 +86,80 @@
                 <th>Termination Date</th>
                 <th>Notes</th>
             </tr>
+            {%for student in student%}
             <tr>
-                <td><a href="">+</a></td>
+                
+                <td><a href="">+</a></th>
+                <td><a href="">edit</a></td>
+                <td> <a href="{% url 'deleteEmployee' byu_id=student.byu_id %}" onclick="return confirm('Are you sure you want to delete this item?')">Delete</a></td>
+                <td>{{student.emp_first}}</td>
+                <td>{{student.emp_last}}</td>
+                <td></td>
+                <td>{{student.international}}</td>
+                <td>{{student.is_male}}</td>
+                <td></td>
+                <td></td>
+                <td>{{student.email}}</td>
+                <td>{{student.phone}}</td>
+                <td></td>
+                <td>{{student.byu_id}}</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                
+            </tr>
+            {%endfor%}
+            {%for supervisor in supervisor%}
+            <tr>
+                
+                <td><a href="">+</a></th>
                 <td><a href="">edit</a></td>
                 <td><a href="">delete</a></td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
+                <td>{{supervisor.supervisor_first}}</td>
+                <td>{{supervisor.supervisor_last}}</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                
             </tr>
+            {%endfor%}
         </table>
     </div>
     
