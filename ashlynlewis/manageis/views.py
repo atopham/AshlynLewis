@@ -28,7 +28,30 @@ def firetablePageView(request) :
     return render(request, 'manageis/firetable.html',context) 
 
 
+def editSingleStudent(request, byu_id):
+    data = StudentEmployee.objects.get(byu_id = byu_id)
+    context = {
+        "record":data
+    }
+    return render(request, "manageis/editStudent.html", context)
+
+def updateSingleStudent(request):
+    if request.method == 'POST':
+        byu_id = request.POST['byu_id']
+        student = StudentEmployee.objects.get(byu_id=byu_id)
+        student.emp_first = request.POST['emp_first']
+        student.emp_last = request.POST['emp_last']
+        student.international = request.POST.get('international') == 'on'
+        student.is_male = request.POST.get('is_male') == 'on'
+        print("student.international: ", student.international)
+        student.email = request.POST['email']
+        student.phone = request.POST['phone']
+        student.save()
+
+    return firetablePageView(request)
+
 # needs work
+# yes it does
 def deleteEmployeePageView(request, byu_id) :
     data = StudentEmployee.objects.get(byu_id = byu_id)
     data.delete()

@@ -90,7 +90,7 @@
             <tr>
                 
                 <td><a href="">+</a></th>
-                <td><a href="">edit</a></td>
+                <td><a href="{% url 'editsinglestudent' byu_id=student.byu_id %}">Edit</a></td>
                 <td> <a href="{% url 'deleteEmployee' byu_id=student.byu_id %}" onclick="return confirm('Are you sure you want to delete this item?')">Delete</a></td>
                 <td>{{student.emp_first}}</td>
                 <td>{{student.emp_last}}</td>
