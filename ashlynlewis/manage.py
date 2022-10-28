@@ -13,7 +13,7 @@ def main():
         raise ImportError(
             "Couldn't import Django. Are you sure it's installed and "
             "available on your PYTHONPATH environment variable? Did you "
-            "forget to activate a virtual environment?"
+            "forget to activate a virtual environment? cmd Windows - ./venv/Scripts/activate.bat  Mac - source ./venv/bin/activate"
         ) from exc
     execute_from_command_line(sys.argv)
 
