@@ -75,13 +75,14 @@ WSGI_APPLICATION = "ashlynlewis.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'ashlynlewisdbinst',
-        'USER': 'roku',
-        'PASSWORD': 'firetable',
-        'HOST': 'ashlynlewis-db.cqzwomelkoft.us-east-1.rds.amazonaws.com',
+        'USER' : 'roku',
+        'PASSWORD' : 'firetable',
+        'HOST' : 'ashlynlewis-db.cqzwomelkoft.us-east-1.rds.amazonaws.com',
         'PORT': '5432',
     }
 }
@@ -115,7 +116,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = "static/"
+#STATIC_URL = "static/"
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'ashlynlewis/static')
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
