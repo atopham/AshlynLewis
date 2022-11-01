@@ -1,30 +1,138 @@
-{%load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="{% static 'css/manageis.css' %}" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <title>Dashboard</title>
+    <title>Firetable</title>
 </head>
-<body class="grid-container">
-    <div class="header">
+<body>
+    <h1>Manage IS Employees</h1>
+    <h2><a href="http://127.0.0.1:8000">Back to Dashboard</a></h2>
+    <div>
+        <form method="get">
+        {{myStudentFilter.form}}
+        {{mySupervisorFilter.form}}
+        {{myWorkFilter.form}}
+            <input type="submit">
+        </form>
     </div>
-    <div class="menu">
-        <h2>Mangage IS Dashboard</h2>
-        <div > Total Number of Employees </div>
-        <div > Total number of RA's </div>
-        <div > Total number of TA's </div>
-        <a class="main-btn"href="http://127.0.0.1:8000/firetable">Go to Firetable</a>
-    </div>
-    <div class="main">
-        <div > Graph 1 goes here</div>
-        <div > Graph 2 goes here</div>
-    </div> 
-    <div class="footer">Footer</div>
-    <script src="{%static 'js/manageis.js'%}"></script>
+    <div>
+        <table>
+            <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>BYU Name</th>
+                <th>International</th>
+                <th><a href="?order_by=is_male">Gender</a></th>
+                <th>Semester</th>
+                <th>Year</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Expected Hours</th>
+                <th>BYU ID</th>
+                <th>Position</th>
+                <th>Class Code</th>
+                <th>Employee Record</th>
+                <th>Pay Grade</th>
+                <th>Pay Grad Tuition</th>
+                <th>Last Pay Increase</th>
+                <th>Pay Increase Amount</th>
+                <th>Increase Date</th>
+                <th>Qualtrics Survey Sent</th>
+                <th>e-Form Submitted</th>
+                <th>Submission Date</th>
+                <th>Authorization to Work</th>
+                <th>Authorization Email Date</th>
+                <th>Terminated</th>
+                <th>Termination Date</th>
+                <th>Notes</th>
+            </tr>
+            {%for student in student%}
+            <tr>
+                
+                <td><a href="">+</a></th>
+                <td><a href="{% url 'editsinglestudent' byu_id=student.byu_id %}">Edit</a></td>
+                <td> <a href="{% url 'deleteEmployee' byu_id=student.byu_id %}" onclick="return confirm('Are you sure you want to delete this item?')">Delete</a></td>
+                <td>{{student.emp_first}}</td>
+                <td>{{student.emp_last}}</td>
+                <td>{%for work in work%}{%if student.byu_id == work.byu_id%}{{work.byu_name}}{%endif%}{%endfor%}</td>
+                {% if student.international%}<td>Yes</td>{% else %}<td>No</td>{%endif%}
+                {% if student.is_male%}<td>M</td>{% else %}<td>F</td>{%endif%}
+                <td>{%for work in work%}{%if student.byu_id == work.byu_id%}{{work.semester}}{%endif%}{%endfor%}</td>
+                <td>{%for work in work%}{%if student.byu_id == work.byu_id%}{{work.year}}{%endif%}{%endfor%}</td>
+                <td>{{student.email}}</td>
+                <td>{{student.phone}}</td>
+                <td>{%for work in work%}{%if student.byu_id == work.byu_id%}{{work.exptected_hours}}{%endif%}{%endfor%}</td>
+                <td>{{student.byu_id}}</td>
+                <td>{%for work in work%}{%if student.byu_id == work.byu_id%}{{work.exptected_hours}}{%endif%}{%endfor%}</td>
+                <td></td>
+                <td>{%for work in work%}{%if student.byu_id == work.byu_id%}{{work.class_code}}{%endif%}{%endfor%}</td>
+                <td>{%for work in work%}{%if student.byu_id == work.byu_id%}{{work.emp_record}}{%endif%}{%endfor%}</td>
+                <td>{%for work in work%}{%if student.byu_id == work.byu_id%}{{work.pay_rate}}{%endif%}{%endfor%}</td>
+                <td>{%for work in work%}{%if student.byu_id == work.byu_id%}{{work.is_pay_grad_tuition}}{%endif%}{%endfor%}</td>
+                <td>{%for work in work%}{%if student.byu_id == work.byu_id%}{{work.last_pay_increase_date}}{%endif%}{%endfor%}</td>
+                <td>{%for work in work%}{%if student.byu_id == work.byu_id%}{{work.pay_increase_amount}}{%endif%}{%endfor%}</td>
+                <td>{%for work in work%}{%if student.byu_id == work.byu_id%}{{work.increase_input_date}}{%endif%}{%endfor%}</td>
+                <td>{%for work in work%}{%if student.byu_id == work.byu_id%}{{work.survey_sent}}{%endif%}{%endfor%}</td>
+                <td>{%for work in work%}{%if student.byu_id == work.byu_id%}{{work.eform_submitted}}{%endif%}{%endfor%}</td>
+                <td>{%for work in work%}{%if student.byu_id == work.byu_id%}{{work.eform_submission_date}}{%endif%}{%endfor%}</td>
+                <td>{%for work in work%}{%if student.byu_id == work.byu_id%}{{work.auth_work_received}}{%endif%}{%endfor%}</td>
+                <td>{%for work in work%}{%if student.byu_id == work.byu_id%}{{work.auth_work_email_sent}}{%endif%}{%endfor%}</td>
+                <td>{%for work in work%}{%if student.byu_id == work.byu_id%}{{work.terminated}}{%endif%}{%endfor%}</td>
+                <td>{%for work in work%}{%if student.byu_id == work.byu_id%}{{work.termination_date}}{%endif%}{%endfor%}</td>
+                <td>{%for work in work%}{%if student.byu_id == work.byu_id%}{{work.notes}}{%endif%}{%endfor%}</td>
+                
+            </tr>
+            {%endfor%}
+            {%for supervisor in supervisor%}
+            <tr>
+                
+                <td><a href="">+</a></th>
+                <td><a href="">edit</a></td>
+                <td><a href="">delete</a></td>
+                <td>{{supervisor.supervisor_first}}</td>
+                <td>{{supervisor.supervisor_last}}</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                
+            </tr>
+            {%endfor%}
 
+            
+            {%for work in work%}
+            
+                    
+            {%endfor%}
+        </table>
+    </div>
+    
 </body>
 </html>

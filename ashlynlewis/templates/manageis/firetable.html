@@ -59,7 +59,6 @@
                         <th>BYU ID</th>
                         <th>Position</th>
                         <th>Class Code</th>
-                        <th>Semester</th>
                         <th>Employee Record</th>
                         <th>Pay Grade</th>
                         <th>Pay Grad Tuition</th>
@@ -91,8 +90,7 @@
                         <td>{{student.phone}}</td>
                         <td>{%for work in work%}{%if student.byu_id == work.byu_id%}{{work.exptected_hours}}{%endif%}{%endfor%}</td>
                         <td>{{student.byu_id}}</td>
-                        <td>{%for work in work%}{%if student.byu_id == work.byu_id%}{{work.exptected_hours}}{%endif%}{%endfor%}</td>
-                        <td></td>
+                        <td>{%for work in work%}{%if student.byu_id == work.byu_id%}{{work.position}}{%endif%}{%endfor%}</td>
                         <td>{%for work in work%}{%if student.byu_id == work.byu_id%}{{work.class_code}}{%endif%}{%endfor%}</td>
                         <td>{%for work in work%}{%if student.byu_id == work.byu_id%}{{work.emp_record}}{%endif%}{%endfor%}</td>
                         <td>{%for work in work%}{%if student.byu_id == work.byu_id%}{{work.pay_rate}}{%endif%}{%endfor%}</td>

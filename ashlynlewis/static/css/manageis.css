@@ -86,12 +86,6 @@ th{
     background-color: rgb(187, 199, 201);
     white-space: nowrap;
 }
-td{
-    white-space: nowrap;
-    max-width: 15rem;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
 a{
     text-decoration: none;
 }
