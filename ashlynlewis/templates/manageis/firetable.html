@@ -90,8 +90,8 @@
                 <td>{{student.emp_first}}</td>
                 <td>{{student.emp_last}}</td>
                 <td>{%for work in work%}{%if student.byu_id == work.byu_id%}{{work.byu_name}}{%endif%}{%endfor%}</td>
-                <td>{{student.international}}</td>
-                <td>{{student.is_male}}</td>
+                {% if student.international%}<td>Yes</td>{% else %}<td>No</td>{%endif%}
+                {% if student.is_male%}<td>M</td>{% else %}<td>F</td>{%endif%}
                 <td>{%for work in work%}{%if student.byu_id == work.byu_id%}{{work.semester}}{%endif%}{%endfor%}</td>
                 <td>{%for work in work%}{%if student.byu_id == work.byu_id%}{{work.year}}{%endif%}{%endfor%}</td>
                 <td>{{student.email}}</td>
