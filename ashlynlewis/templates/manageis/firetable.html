@@ -66,6 +66,7 @@
                 <th>Last Name</th>
                 <th>BYU Name</th>
                 <th>International</th>
+                <th>Position</th>
                 <th>Gender</th>
                 <th>Semester</th>
                 <th>Year</th>
@@ -97,6 +98,7 @@
                 <td>{{student.emp_last}}</td>
                 <td>{%for work in work%}{%if student.byu_id == work.byu_id%}{{work.byu_name}}{%endif%}{%endfor%}</td>
                 {% if student.international%}<td class="centr">Yes</td>{% else %}<td class="centr">No</td>{%endif%}
+                <td>{{student.position}}</td>
                 {% if student.is_male%}<td class="centr">M</td>{% else %}<td class="centr">F</td>{%endif%}
                 <td class="centr">{%for work in work%}{%if student.byu_id == work.byu_id%}{{work.semester}}{%endif%}{%endfor%}</td>
                 <td class="centr">{%for work in work%}{%if student.byu_id == work.byu_id%}{{work.year}}{%endif%}{%endfor%}</td>
