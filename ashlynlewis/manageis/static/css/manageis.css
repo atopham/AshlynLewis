@@ -1,7 +1,13 @@
 @font-face {
-  font-family: 'abc';
-  src: local('static'),
-       url('../static/fonts/truenoblk.ttf') format("truetype");
+  font-family: Truen;
+  src: url('../fonts/truenoblk.ttf') format("truetype");
+}
+@font-face{
+  font-family: Truen it;
+  src: url('../fonts/truenosbdit.ttf') format("truetype");
+}
+body,h2{
+  font-family: Truen it;
 }
 .header { grid-area: header;
     background: rgb(148,123,218);
