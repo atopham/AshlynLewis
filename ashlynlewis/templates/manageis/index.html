@@ -1,4 +1,6 @@
+{% extends '../base.html' %}
 {%load static %}
+<<<<<<< Updated upstream
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,3 +30,22 @@
 
 </body>
 </html>
+=======
+{%block title%}
+<title>Dashboard</title>
+{%endblock%}
+{%block menu%}
+<h4>Dashboard</h4>
+<div > Total Number of Employees </div>
+<div > Total number of RA's </div>
+<div > Total number of TA's </div>
+<a class="main-btn"href="{% url "firetable"%}">Go to Firetable</a>
+{%endblock%}
+{%block main%}
+<h1>Quick View</h1>
+<div class="pinboard">
+    <div class="graph"> <img class="dashboard-img" src="{% static 'img/pie.png'%}" alt="pie chart"></div>
+    <div class="graph"> <img class="dashboard-img" src="{% static 'img/bar.png'%}" alt="bar chart"></div>
+</div>
+{%endblock%}
+>>>>>>> Stashed changes

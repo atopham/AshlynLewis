@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 {%load static %}
 <!DOCTYPE html>
 <html lang="en">
@@ -7,38 +8,139 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="{% static 'css/manageis.css' %}" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+=======
+{% extends '../base.html' %}
+{% load static %}
+{%block title%}
+>>>>>>> Stashed changes
     <title>Firetable</title>
-
-    
-    <script>
-        //this code will show an alert on a certain before the start of each semester
-        var fall = "08/30";
-        var winter = "12/30";
-        var spring = "04/25";
-        var summer = "07/12";
-        var alerttext = "Its the start of the semester! Remember to increase pay";
-        var d = new Date();
-        var today = new Date();
-        var dd = today.getDate();
-        var mm = today.getMonth()+1; 
-        var yyyy = today.getFullYear();
-        if(dd<10) {
-            dd = '0'+dd
-        }      
-        if(mm<10) {
-            mm = '0'+mm
-        } 
-        //today = mm + '/' + dd + '/' + yyyy;
-        today = mm + '/' + dd;
-        if(today == summer){
-        alert(alerttext)
-        }
-    </script>
-
-</head>
-<body class="grid-container">
-    <div class="header">
+{%endblock%}
+{% block menu %}
+<a class="main-btn"href="{% url 'index'%}"><svg class='icon-svg' id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><title>Trade_Icons</title><polygon points="11.62 3.81 7.43 8 11.62 12.19 10.09 13.71 4.38 8 10.09 2.29 11.62 3.81"/></svg> Dashboard</a>
+<div class="filters">
+    <h4>Filters</h4>
+    <form method="get">
+        {{myStudentFilter.form}}
+        {{mySupervisorFilter.form}}
+        {{myWorkFilter.form}}
+            <input type="submit">
+    </form>
+</div>
+{% endblock menu %}
+{%block main%}
+<div class="control-bar">
+    <h1>Employees</h1>
+    <details class="custom-select">
+        <summary class="radios">
+            <input style="color:white" type="radio" name="item" id="default" checked><span>Export</span> <img class="icon-img" src="{% static 'img/download-icon.svg'%}">
+            <input type="radio" name="item" id="item1" title="Item 1">
+            <input type="radio" name="item" id="item2" title="Item 2">
+            <input type="radio" name="item" id="item3" title="Item 3">
+            <input type="radio" name="item" id="item4" title="Item 4">
+            <input type="radio" name="item" id="item5" title="Item 5">
+            <input type="radio" name="item" id="item6" title="Item 6">
+        </summary>
+        <ul class="list">
+            <li>
+                <label for="item1">
+                    <a href={% url 'sup_export_to_csv'%}>Supervisor List</a>
+                    <span></span>
+                </label>
+            </li>
+            <li>
+                <label for="item2"><a href={% url 'stud_export_to_csv'%}>Student List</a></label>
+            </li>
+            <li>
+                <label for="item3"><a href={% url 'fall_export_to_csv'%}>Fall</a></label>
+            </li>
+            <li>
+                <label for="item4"><a href={% url 'winter_export_to_csv'%}>Winter</a></label>
+            </li>
+            <li>
+                <label for="item5"><a href={% url 'summer_export_to_csv'%}>Summer</a></label>
+            </li>
+            <li>
+                <label for="item6"><a href={% url 'spring_export_to_csv'%}>Spring</a></label>
+            </li>
+        </ul>
+    </details>
+    <div class="searchbar">
+        <input type="text" placeholder="SEARCH">
     </div>
+</div> 
+
+<div class="maintable">
+    <div>
+        <table class="table table-hover">
+            <tr>
+                <th class="toplefttableheader"></th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>BYU Name</th>
+                <th>International</th>
+                <th>Gender</th>
+                <th>Semester</th>
+                <th>Year</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Expected Hours</th>
+                <th>BYU ID</th>
+                <th>Position</th>
+                <th>Class Code</th>
+                <th>Employee Record</th>
+                <th>Pay Grade</th>
+                <th>Pay Grad Tuition</th>
+                <th>Last Pay Increase</th>
+                <th>Pay Increase Amount</th>
+                <th>Increase Date</th>
+                <th>Qualtrics Survey Sent</th>
+                <th>e-Form Submitted</th>
+                <th>Submission Date</th>
+                <th>Authorization to Work</th>
+                <th>Authorization Email Date</th>
+                <th>Terminated</th>
+                <th>Termination Date</th>
+                <th>Notes</th>
+            </tr>
+            {%for student in student%}
+            <tr>
+                <td><svg class="svg-icon edit-icon" onclick="editDropdown({{student.byu_id}})" style="width: 1.5em; height: 1.5em;vertical-align: middle;fill: currentcolor; overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M834.3 705.7c0 82.2-66.8 149-149 149H325.9c-82.2 0-149-66.8-149-149V346.4c0-82.2 66.8-149 149-149h129.8v-42.7H325.9c-105.7 0-191.7 86-191.7 191.7v359.3c0 105.7 86 191.7 191.7 191.7h359.3c105.7 0 191.7-86 191.7-191.7V575.9h-42.7v129.8z"  /><path d="M889.7 163.4c-22.9-22.9-53-34.4-83.1-34.4s-60.1 11.5-83.1 34.4L312 574.9c-16.9 16.9-27.9 38.8-31.2 62.5l-19 132.8c-1.6 11.4 7.3 21.3 18.4 21.3 0.9 0 1.8-0.1 2.7-0.2l132.8-19c23.7-3.4 45.6-14.3 62.5-31.2l411.5-411.5c45.9-45.9 45.9-120.3 0-166.2zM362 585.3L710.3 237 816 342.8 467.8 691.1 362 585.3zM409.7 730l-101.1 14.4L323 643.3c1.4-9.5 4.8-18.7 9.9-26.7L436.3 720c-8 5.2-17.1 8.7-26.6 10z m449.8-430.7l-13.3 13.3-105.7-105.8 13.3-13.3c14.1-14.1 32.9-21.9 52.9-21.9s38.8 7.8 52.9 21.9c29.1 29.2 29.1 76.7-0.1 105.8z"/></svg></td> 
+                <td>{{student.emp_first}}</td>
+                <td>{{student.emp_last}}</td>
+                <td>{%for work in work%}{%if student.byu_id == work.byu_id%}{{work.byu_name}}{%endif%}{%endfor%}</td>
+                {% if student.international%}<td class="centr">Yes</td>{% else %}<td class="centr">No</td>{%endif%}
+                {% if student.is_male%}<td class="centr">M</td>{% else %}<td class="centr">F</td>{%endif%}
+                <td class="centr">{%for work in work%}{%if student.byu_id == work.byu_id%}{{work.semester}}{%endif%}{%endfor%}</td>
+                <td class="centr">{%for work in work%}{%if student.byu_id == work.byu_id%}{{work.year}}{%endif%}{%endfor%}</td>
+                <td>{{student.email}}</td>
+                <td>{{student.phone}}</td>
+                <td class="centr">{%for work in work%}{%if student.byu_id == work.byu_id%}{{work.exptected_hours}}{%endif%}{%endfor%}</td>
+                <td>{{student.byu_id}}</td>
+                <td >{%for work in work%}{%if student.byu_id == work.byu_id%}{{work.position}}{%endif%}{%endfor%}</td>
+                <td class="centr">{%for work in work%}{%if student.byu_id == work.byu_id%}{{work.class_code}}{%endif%}{%endfor%}</td>
+                <td class="centr">{%for work in work%}{%if student.byu_id == work.byu_id%}{{work.emp_record}}{%endif%}{%endfor%}</td>
+                <td class="centr">{%for work in work%}{%if student.byu_id == work.byu_id%}{{work.pay_rate}}{%endif%}{%endfor%}</td>
+                <td class="centr">{%for work in work%}{%if student.byu_id == work.byu_id%}{{work.is_pay_grad_tuition}}{%endif%}{%endfor%}</td>
+                <td class="centr">{%for work in work%}{%if student.byu_id == work.byu_id%}{{work.last_pay_increase_date}}{%endif%}{%endfor%}</td>
+                <td>{%for work in work%}{%if student.byu_id == work.byu_id%}{{work.pay_increase_amount}}{%endif%}{%endfor%}</td>
+                <td class="centr">{%for work in work%}{%if student.byu_id == work.byu_id%}{{work.increase_input_date}}{%endif%}{%endfor%}</td>
+                <td class="centr">{%for work in work%}{%if student.byu_id == work.byu_id%}{{work.survey_sent}}{%endif%}{%endfor%}</td>
+                <td class="centr">{%for work in work%}{%if student.byu_id == work.byu_id%}{{work.eform_submitted}}{%endif%}{%endfor%}</td>
+                <td>{%for work in work%}{%if student.byu_id == work.byu_id%}{{work.eform_submission_date}}{%endif%}{%endfor%}</td>
+                <td class="centr">{%for work in work%}{%if student.byu_id == work.byu_id%}{{work.auth_work_received}}{%endif%}{%endfor%}</td>
+                <td>{%for work in work%}{%if student.byu_id == work.byu_id%}{{work.auth_work_email_sent}}{%endif%}{%endfor%}</td>
+                <td class="centr">{%for work in work%}{%if student.byu_id == work.byu_id%}{{work.terminated}}{%endif%}{%endfor%}</td>
+                <td>{%for work in work%}{%if student.byu_id == work.byu_id%}{{work.termination_date}}{%endif%}{%endfor%}</td>
+                <td>{%for work in work%}{%if student.byu_id == work.byu_id%}{{work.notes}}{%endif%}{%endfor%}</td>
+            </tr>
+            <tr id="{{student.byu_id}}" style="display: none;">
+                <td><a class="edit" href="{% url 'editsinglestudent' byu_id=student.byu_id %}">Edit</a></td>
+                <td><a class="delete" href="{% url 'deleteEmployee' byu_id=student.byu_id %}" onclick="return confirm('Are you sure you want to delete this item?')">Delete</a></td>
+            </tr>
+            {%endfor%}
+        </table>
+    </div>
+<<<<<<< Updated upstream
     <div class="menu">
         <h2>Mangage IS</h2>
         <div>
@@ -52,154 +154,41 @@
         <a class="main-btn"href="http://127.0.0.1:8000">Back to Dashboard</a>
         
         
+=======
+</div>
+<div class="control-bar">
+    <h1>Supervisors</h1>
+    <div class="searchbar">
+        <input type="text" placeholder="SEARCH">
+>>>>>>> Stashed changes
     </div>
-    <div class="main">
-        <div class="control-bar">
-            <h1>Employees</h1>
-            <div class="pagination">
-                <a class="page-tab" href="#">&laquo;</a>
-                <a class="page-tab" href="#">1</a>
-                <a class="page-tab" href="#" class="active">2</a>
-                <a class="page-tab" href="#">3</a>
-                <a class="page-tab" href="#">4</a>
-                <a class="page-tab" href="#">5</a>
-                <a class="page-tab" href="#">6</a>
-                <a class="page-tab" href="#">&raquo;</a>
-            </div>
-        </div> 
-        <div class="control-bar ">
-            <a class="main-btn"href={% url 'sup_export_to_csv'%}>Export Supervisor List</a>
-            <a class="main-btn"href={% url 'stud_export_to_csv'%}>Export Student List</a>
-            <a class="main-btn"href={% url 'fall_export_to_csv'%}>Export Fall</a>
-            <a class="main-btn"href={% url 'winter_export_to_csv'%}>Export Winter</a>
-            <a class="main-btn"href={% url 'summer_export_to_csv'%}>Export Summer</a>
-            <a class="main-btn"href={% url 'spring_export_to_csv'%}>Export Spring</a>
-        </div> 
-        <div class="maintable">
-            <div>
-                <table class="table table-hover">
-                    <div>
-                        Search bar goes here
-                    </div>
-                    <tr>
-                        <th class="toplefttableheader"></th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>BYU Name</th>
-                        <th>International</th>
-                        <th><a href="?order_by=is_male">Gender</a></th>
-                        <th>Semester</th>
-                        <th>Year</th>
-                        <th>Email</th>
-                        <th>Phone</th>
-                        <th>Expected Hours</th>
-                        <th>BYU ID</th>
-                        <th>Position</th>
-                        <th>Class Code</th>
-                        <th>Employee Record</th>
-                        <th>Pay Grade</th>
-                        <th>Pay Grad Tuition</th>
-                        <th>Last Pay Increase</th>
-                        <th>Pay Increase Amount</th>
-                        <th>Increase Date</th>
-                        <th>Qualtrics Survey Sent</th>
-                        <th>e-Form Submitted</th>
-                        <th>Submission Date</th>
-                        <th>Authorization to Work</th>
-                        <th>Authorization Email Date</th>
-                        <th>Terminated</th>
-                        <th>Termination Date</th>
-                        <th>Notes</th>
-                    </tr>
-                    {%for student in student%}
-                    
-                    <tr>
-                        
-                        <td><svg class="svg-icon edit-icon" onclick="editDropdown({{student.byu_id}})" style="width: 1.5em; height: 1.5em;vertical-align: middle;fill: currentcolor; overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M834.3 705.7c0 82.2-66.8 149-149 149H325.9c-82.2 0-149-66.8-149-149V346.4c0-82.2 66.8-149 149-149h129.8v-42.7H325.9c-105.7 0-191.7 86-191.7 191.7v359.3c0 105.7 86 191.7 191.7 191.7h359.3c105.7 0 191.7-86 191.7-191.7V575.9h-42.7v129.8z"  /><path d="M889.7 163.4c-22.9-22.9-53-34.4-83.1-34.4s-60.1 11.5-83.1 34.4L312 574.9c-16.9 16.9-27.9 38.8-31.2 62.5l-19 132.8c-1.6 11.4 7.3 21.3 18.4 21.3 0.9 0 1.8-0.1 2.7-0.2l132.8-19c23.7-3.4 45.6-14.3 62.5-31.2l411.5-411.5c45.9-45.9 45.9-120.3 0-166.2zM362 585.3L710.3 237 816 342.8 467.8 691.1 362 585.3zM409.7 730l-101.1 14.4L323 643.3c1.4-9.5 4.8-18.7 9.9-26.7L436.3 720c-8 5.2-17.1 8.7-26.6 10z m449.8-430.7l-13.3 13.3-105.7-105.8 13.3-13.3c14.1-14.1 32.9-21.9 52.9-21.9s38.8 7.8 52.9 21.9c29.1 29.2 29.1 76.7-0.1 105.8z"/></svg></td> 
-                        <td>{{student.emp_first}}</td>
-                        <td>{{student.emp_last}}</td>
-                        <td>{%for work in work%}{%if student.byu_id == work.byu_id%}{{work.byu_name}}{%endif%}{%endfor%}</td>
-                        {% if student.international%}<td>Yes</td>{% else %}<td>No</td>{%endif%}
-                        {% if student.is_male%}<td>M</td>{% else %}<td>F</td>{%endif%}
-                        <td>{%for work in work%}{%if student.byu_id == work.byu_id%}{{work.semester}}{%endif%}{%endfor%}</td>
-                        <td>{%for work in work%}{%if student.byu_id == work.byu_id%}{{work.year}}{%endif%}{%endfor%}</td>
-                        <td>{{student.email}}</td>
-                        <td>{{student.phone}}</td>
-                        <td>{%for work in work%}{%if student.byu_id == work.byu_id%}{{work.exptected_hours}}{%endif%}{%endfor%}</td>
-                        <td>{{student.byu_id}}</td>
-                        <td>{%for work in work%}{%if student.byu_id == work.byu_id%}{{work.position}}{%endif%}{%endfor%}</td>
-                        <td>{%for work in work%}{%if student.byu_id == work.byu_id%}{{work.class_code}}{%endif%}{%endfor%}</td>
-                        <td>{%for work in work%}{%if student.byu_id == work.byu_id%}{{work.emp_record}}{%endif%}{%endfor%}</td>
-                        <td>{%for work in work%}{%if student.byu_id == work.byu_id%}{{work.pay_rate}}{%endif%}{%endfor%}</td>
-                        <td>{%for work in work%}{%if student.byu_id == work.byu_id%}{{work.is_pay_grad_tuition}}{%endif%}{%endfor%}</td>
-                        <td>{%for work in work%}{%if student.byu_id == work.byu_id%}{{work.last_pay_increase_date}}{%endif%}{%endfor%}</td>
-                        <td>{%for work in work%}{%if student.byu_id == work.byu_id%}{{work.pay_increase_amount}}{%endif%}{%endfor%}</td>
-                        <td>{%for work in work%}{%if student.byu_id == work.byu_id%}{{work.increase_input_date}}{%endif%}{%endfor%}</td>
-                        <td>{%for work in work%}{%if student.byu_id == work.byu_id%}{{work.survey_sent}}{%endif%}{%endfor%}</td>
-                        <td>{%for work in work%}{%if student.byu_id == work.byu_id%}{{work.eform_submitted}}{%endif%}{%endfor%}</td>
-                        <td>{%for work in work%}{%if student.byu_id == work.byu_id%}{{work.eform_submission_date}}{%endif%}{%endfor%}</td>
-                        <td>{%for work in work%}{%if student.byu_id == work.byu_id%}{{work.auth_work_received}}{%endif%}{%endfor%}</td>
-                        <td>{%for work in work%}{%if student.byu_id == work.byu_id%}{{work.auth_work_email_sent}}{%endif%}{%endfor%}</td>
-                        <td>{%for work in work%}{%if student.byu_id == work.byu_id%}{{work.terminated}}{%endif%}{%endfor%}</td>
-                        <td>{%for work in work%}{%if student.byu_id == work.byu_id%}{{work.termination_date}}{%endif%}{%endfor%}</td>
-                        <td>{%for work in work%}{%if student.byu_id == work.byu_id%}{{work.notes}}{%endif%}{%endfor%}</td>
-                        
-                    </tr>
-                    <tr id="{{student.byu_id}}" style="display: none;">
-                        <td><a href="{% url 'editsinglestudent' byu_id=student.byu_id %}">Edit</a></td>
-                        <td> <a href="{% url 'deleteEmployee' byu_id=student.byu_id %}" onclick="return confirm('Are you sure you want to delete this item?')">Delete</a></td>
-                    </tr>
-                    {%endfor%}
-                    {%for supervisor in supervisor%}
-                    <tr>
-                        
-                        <td><svg class="svg-icon edit-icon" onclick="editDropdown({{student.byu_id}})" style="width: 1.5em; height: 1.5em;vertical-align: middle;fill: currentcolor; overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M834.3 705.7c0 82.2-66.8 149-149 149H325.9c-82.2 0-149-66.8-149-149V346.4c0-82.2 66.8-149 149-149h129.8v-42.7H325.9c-105.7 0-191.7 86-191.7 191.7v359.3c0 105.7 86 191.7 191.7 191.7h359.3c105.7 0 191.7-86 191.7-191.7V575.9h-42.7v129.8z"  /><path d="M889.7 163.4c-22.9-22.9-53-34.4-83.1-34.4s-60.1 11.5-83.1 34.4L312 574.9c-16.9 16.9-27.9 38.8-31.2 62.5l-19 132.8c-1.6 11.4 7.3 21.3 18.4 21.3 0.9 0 1.8-0.1 2.7-0.2l132.8-19c23.7-3.4 45.6-14.3 62.5-31.2l411.5-411.5c45.9-45.9 45.9-120.3 0-166.2zM362 585.3L710.3 237 816 342.8 467.8 691.1 362 585.3zM409.7 730l-101.1 14.4L323 643.3c1.4-9.5 4.8-18.7 9.9-26.7L436.3 720c-8 5.2-17.1 8.7-26.6 10z m449.8-430.7l-13.3 13.3-105.7-105.8 13.3-13.3c14.1-14.1 32.9-21.9 52.9-21.9s38.8 7.8 52.9 21.9c29.1 29.2 29.1 76.7-0.1 105.8z"/></svg></th>
-                        <td>{{supervisor.supervisor_first}}</td>
-                        <td>{{supervisor.supervisor_last}}</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>  
-                    </tr>
-                    {% comment %} <tr id="{{supervisor.byu_id}}" style="display: none;">
-                        <td><a href="{% url 'editsinglestudent' byu_id=supervisor.byu_id %}">Edit</a></td>
-                        <td> <a href="{% url 'deleteEmployee' byu_id=supervisor.byu_id %}" onclick="return confirm('Are you sure you want to delete this item?')">Delete</a></td>
-                    </tr> {% endcomment %}
-                    {%endfor%}
+</div> 
+<div class="maintable">
+    <div>
+        <table class="table table-hover">
+            <tr>
+                <th class="toplefttableheader"></th>
+                <th>First Name</th>
+                <th>Last Name</th>
+            </tr>
+            {%for supervisor in supervisor%}
+            <tr>
+                <td><svg class="svg-icon edit-icon" onclick="editDropdown({{student.byu_id}})" style="width: 1.5em; height: 1.5em;vertical-align: middle;fill: currentcolor; overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M834.3 705.7c0 82.2-66.8 149-149 149H325.9c-82.2 0-149-66.8-149-149V346.4c0-82.2 66.8-149 149-149h129.8v-42.7H325.9c-105.7 0-191.7 86-191.7 191.7v359.3c0 105.7 86 191.7 191.7 191.7h359.3c105.7 0 191.7-86 191.7-191.7V575.9h-42.7v129.8z"  /><path d="M889.7 163.4c-22.9-22.9-53-34.4-83.1-34.4s-60.1 11.5-83.1 34.4L312 574.9c-16.9 16.9-27.9 38.8-31.2 62.5l-19 132.8c-1.6 11.4 7.3 21.3 18.4 21.3 0.9 0 1.8-0.1 2.7-0.2l132.8-19c23.7-3.4 45.6-14.3 62.5-31.2l411.5-411.5c45.9-45.9 45.9-120.3 0-166.2zM362 585.3L710.3 237 816 342.8 467.8 691.1 362 585.3zM409.7 730l-101.1 14.4L323 643.3c1.4-9.5 4.8-18.7 9.9-26.7L436.3 720c-8 5.2-17.1 8.7-26.6 10z m449.8-430.7l-13.3 13.3-105.7-105.8 13.3-13.3c14.1-14.1 32.9-21.9 52.9-21.9s38.8 7.8 52.9 21.9c29.1 29.2 29.1 76.7-0.1 105.8z"/></svg></th>
+                <td>{{supervisor.supervisor_first}}</td>
+                <td>{{supervisor.supervisor_last}}</td>
+            </tr>
+            {% comment %} <tr id="{{supervisor.byu_id}}" style="display: none;">
+                <td class="edit"><a href="{% url 'editsinglestudent' byu_id=supervisor.byu_id %}">Edit</a></td>
+                <td class="delete"> <a href="{% url 'deleteEmployee' byu_id=supervisor.byu_id %}" onclick="return confirm('Are you sure you want to delete this item?')">Delete</a></td>
+            </tr> {% endcomment %}
+            {%endfor%}
 
+    
+            {%for work in work%}
             
-                    {%for work in work%}
                     
-                            
-                    {%endfor%}
-                </table>
-            </div>
-        </div>
-    </div> 
-    <div class="footer">Footer</div>
-    <script src="{%static 'js/manageis.js'%}"></script>
-
-</body>
-</html>
+            {%endfor%}
+        </table>
+    </div>
+</div>
+{% endblock %}
