@@ -1,7 +1,3 @@
-<<<<<<< Updated upstream
-.header { grid-area: header;
-    background: rgb(148,123,218);
-=======
 @font-face {
   font-family: Truen;
   src: url('../fonts/truenoblk.ttf') format("truetype");
@@ -23,7 +19,6 @@ h4{
 }
 .header { 
     grid-area: header;
->>>>>>> Stashed changes
     background: linear-gradient(27deg, rgba(148,123,218,1) 0%, rgba(233,233,233,1) 54%, rgba(255,255,255,1) 100%);
     height: .5rem;
 }
@@ -153,8 +148,6 @@ a{
 }
 .toplefttableheader{
     border-top-left-radius: 15px;
-<<<<<<< Updated upstream
-=======
 }
 .dashboard-img{
   width: 32rem;
@@ -337,5 +330,4 @@ label span {
   width: auto;
   height: 0px;
   transition: .5s;
->>>>>>> Stashed changes
 }

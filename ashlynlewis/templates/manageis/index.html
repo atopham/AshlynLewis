@@ -1,36 +1,5 @@
 {% extends '../base.html' %}
 {%load static %}
-<<<<<<< Updated upstream
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="{% static 'css/manageis.css' %}" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <title>Dashboard</title>
-</head>
-<body class="grid-container">
-    <div class="header">
-    </div>
-    <div class="menu">
-        <h2>Mangage IS Dashboard</h2>
-        <div > Total Number of Employees </div>
-        <div > Total number of RA's </div>
-        <div > Total number of TA's </div>
-        <a class="main-btn"href="http://127.0.0.1:8000/firetable">Go to Firetable</a>
-    </div>
-    <div class="main">
-        <div > Graph 1 goes here</div>
-        <div > Graph 2 goes here</div>
-    </div> 
-    <div class="footer">Footer</div>
-    <script src="{%static 'js/manageis.js'%}"></script>
-
-</body>
-</html>
-=======
 {%block title%}
 <title>Dashboard</title>
 {%endblock%}
@@ -48,4 +17,3 @@
     <div class="graph"> <img class="dashboard-img" src="{% static 'img/bar.png'%}" alt="bar chart"></div>
 </div>
 {%endblock%}
->>>>>>> Stashed changes
