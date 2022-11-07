@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Single Supervisor</title>
+</head>
+<body>
+
+    <div>
+        <form name="form" method="post" action="{% url 'updatesinglesupervisor' %}">
+            {% csrf_token %}
+            <input type="hidden" id="supervisor_id" name="supervisor_id" value="{{supervisor.supervisor_id}}">
+
+            <label for="supervisor_first">First Name:</label>
+            <input type="text" name="supervisor_first" id="supervisor_first" value="{{supervisor.supervisor_first}}" autofocus>
+            <br><br>
+
+            <label for="supervisor_last">Last Name:</label>
+            <input type="text" name="supervisor_last" id="supervisor_last" value="{{supervisor.supervisor_last}}">
+            <br><br>
+
+            <button type="submit">Update</button>
+
+        </form>
+    </div>
+</body>
+</html>

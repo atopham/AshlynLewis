@@ -1,18 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manage IS Dashboard</title>
-</head>
-<body>
-    <h1>Manage IS Dashboard</h1>
-    <div > Graph 1 goes here</div>
-    <div > Graph 2 goes here</div>
-    <div > Total Number of Employees </div>
-    <div > Total number of RA's </div>
-    <div > Total number of TA's </div>
-    <button><a href="http://127.0.0.1:8000/firetable">Go to Firetable</a></button>
-</body>
-</html>
+{% extends '../base.html' %}
+{%load static %}
+{%block title%}
+<title>Dashboard</title>
+{%endblock%}
+{%block menu%}
+<h4>Dashboard</h4>
+<div > Total Number of Employees </div>
+<div > Total number of RA's </div>
+<div > Total number of TA's </div>
+<a class="main-btn"href="{% url "firetable"%}">Go to Firetable</a>
+{%endblock%}
+{%block main%}
+<h1>Quick View</h1>
+<div class="pinboard">
+    <div class="graph"> <img class="dashboard-img" src="{% static 'img/pie.png'%}" alt="pie chart"></div>
+    <div class="graph"> <img class="dashboard-img" src="{% static 'img/bar.png'%}" alt="bar chart"></div>
+</div>
+{%endblock%}

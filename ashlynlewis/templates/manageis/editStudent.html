@@ -11,30 +11,30 @@
     <div>
         <form name="form" method="post" action="{% url 'updatesinglestudent' %}">
             {% csrf_token %}
-            <input type="hidden" id="byu_id" name="byu_id" value="{{record.byu_id}}">
+            <input type="hidden" id="byu_id" name="byu_id" value="{{employee.byu_id}}">
 
             <label for="emp_first">First Name:</label>
-            <input type="text" name="emp_first" id="emp_first" value="{{record.emp_first}}" autofocus>
+            <input type="text" name="emp_first" id="emp_first" value="{{employee.emp_first}}" autofocus>
             <br><br>
 
             <label for="emp_last">Last Name:</label>
-            <input type="text" name="emp_last" id="emp_last" value="{{record.emp_last}}">
+            <input type="text" name="emp_last" id="emp_last" value="{{employee.emp_last}}">
             <br><br>
 
             <label for="international">International:</label>
-            <input type="checkbox" name="international" id="international" {% if record.international %} checked {% endif %}>
+            <input type="checkbox" name="international" id="international" {% if employee.international %} checked {% endif %}>
             <br><br>
 
             <label for="is_male">Is Male:</label>
-            <input type="checkbox" name="is_male" id="is_male" {% if record.is_male %} checked {% endif %}>
+            <input type="checkbox" name="is_male" id="is_male" {% if employee.is_male %} checked {% endif %}>
             <br><br>
 
             <label for="email">Email:</label>
-            <input type="email" name="email" id="email" value="{{record.email}}">
+            <input type="email" name="email" id="email" value="{{employee.email}}">
             <br><br>
 
             <label for="phone">Phone:</label>
-            <input type="phone" name="phone" id="phone" value="{{record.phone}}">
+            <input type="phone" name="phone" id="phone" value="{{employee.phone}}">
             <br><br>
 
             <button type="submit">Update</button>

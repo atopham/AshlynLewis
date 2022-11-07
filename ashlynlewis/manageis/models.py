@@ -137,7 +137,7 @@ class StudentEmployee(models.Model):
 
 
 class StudentWork(models.Model):
-    byu = models.ForeignKey(StudentEmployee, models.DO_NOTHING)
+    byu_id = models.IntegerField(primary_key=True)
     exptected_hours = models.SmallIntegerField(blank=True, null=True)
     semester = models.CharField(max_length=10, blank=True, null=True)
     year = models.IntegerField(blank=True, null=True)

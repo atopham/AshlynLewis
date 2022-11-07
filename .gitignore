@@ -1,2 +1,7 @@
-
 venv
+*.pyc
+ashlynlewis/ashlynlewis/__pycache__
+ashlynlewis/ashlynlewis/__pycache__/settings.cpython-310.pyc
+ashlynlewis/manageis/__pycache__/filters.cpython-310.pyc
+ashlynlewis/manageis/__pycache__/models.cpython-310.pyc
+ashlynlewis/manageis/__pycache__/views.cpython-310.pyc
