@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import firetablePageView, indexPageView, deleteEmployeePageView, updateSingleStudent, editSingleStudent, sup_export_to_csv,stud_export_to_csv,summer_export_to_csv, spring_export_to_csv, fall_export_to_csv,winter_export_to_csv, editSingleSupervisor, updateSingleSupervisor
+from .views import firetablePageView, indexPageView, deleteEmployeePageView, updateSingleStudent, editSingleStudent, sup_export_to_csv,stud_export_to_csv,summer_export_to_csv, spring_export_to_csv, fall_export_to_csv,winter_export_to_csv, editSingleSupervisor, updateSingleSupervisor, deleteSupervisor
 
 urlpatterns = [
     path("", indexPageView, name="index"),
@@ -9,7 +9,7 @@ urlpatterns = [
     path("updatesinglestudent", updateSingleStudent, name="updatesinglestudent"),
     path("editsinglesupervisor/<int:supervisor_id>", editSingleSupervisor, name="editsinglesupervisor"),
     path("updatesinglesupervisor", updateSingleSupervisor, name="updatesinglesupervisor"),
-    path("deletesupervisor/<int:supervisor_id>", deleteEmployeePageView, name="deletesupervisor"),
+    path("deletesupervisor/<int:supervisor_id>", deleteSupervisor, name="deletesupervisor"),
 
     path("sup_export_to_csv", sup_export_to_csv, name="sup_export_to_csv"),
     path("stud_export_to_csv", stud_export_to_csv, name="stud_export_to_csv"),
