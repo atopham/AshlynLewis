@@ -124,6 +124,7 @@
             <tr id="{{student.byu_id}}" style="display: none;">
                 <td><a class="edit" href="{% url 'editsinglestudent' byu_id=student.byu_id %}">Edit</a></td>
                 <td><a class="delete" href="{% url 'deleteEmployee' byu_id=student.byu_id %}" onclick="return confirm('Are you sure you want to delete this item?')">Delete</a></td>
+                <td><a class="Authorization" href="https://form.jotform.com/223104641409043">Authorization</a></td>
             </tr>
             {%endfor%}
         </table>
